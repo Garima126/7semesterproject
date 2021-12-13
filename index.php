@@ -3,44 +3,23 @@
 <head>
 	<meta charset="utf-8">
 	<title>Price Comparision System</title>
-	<style>
-		body {
-			margin: 0px;
-			padding: 0px;
-		}
-		#header {
-
-			height: 50px;
-			width: 100%;
-			background: #2d2dd5;
-		}
-		#header  #title {
-			color: white;
-			margin-left: 40%;
-			margin-top: 7px;
-			font-size: 40px;
-		}
-		.container {
-			background: #e5d7d7;
-			height: 500px;
-		}
-		#search-txt {
-			font-size: 30px;
-		}
-		#search-btn{
-			font-size: 30px;
-		}
-	</style>
+	<link rel="stylesheet" type="text/css" href="style.css"/>
 </head>
 <body>
 	<div id="header">
 		<span id="title">Price Comparision System</span>
 	</div>
-      <div class="container">
+      <div class="container" style="background-position: center; background-image:url(balanceme.png); background-repeat: no-repeat; ">
       		<div class="search-panel">
-      			<input type="text" name="search-txt" id="search-txt"/>
-      			<input type="button" name="search-btn" value="Compare" id="search-btn"/>
+      			<form action="process.php" method="post">
+      				<input type="text" name="search-txt" placeholder="Type a product" id="search-txt"/>
+      				<input type="submit" name="search-btn" value="Analyze" id="search-btn"/>
+      			</form>
       		</div>
       </div>
+      	<footer>
+		  <p>Authors: Manisha,Garima, Sadiskya</p>
+		  <p><a href="mailto:team@gmail.com"></a></p>
+		</footer>
 </body>
 </html>
