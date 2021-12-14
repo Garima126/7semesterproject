@@ -6,7 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="style.css"/>
 </head>
 <body>
-	<div id="header">
+	<div id="header"> 
 		<span id="title">Price Comparision System</span>
 	</div>
       <div class="container" style="background-position: center; background-image:url(balanceme.png); background-repeat: no-repeat; ">
