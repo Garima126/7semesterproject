@@ -1,11 +1,20 @@
-*{
+   *{
 		margin: 0px 0px;
 		padding: 0px 0px;
+	}
+	#search-txt-err{
+		color: #6c1b1b;
+		margin-left: 20%;
+		font-size: 21px;
+		border: 1px solid darkred;
+		background: #dea6b3;
+		padding-left: 100px;
+		padding-right: 357px;
+		padding-bottom:20px;
 	}
 	#searching-txt {
 		height: 40px;
 		width: 100%;
-		background: #dfdfdf;
 		font-size: 30px;
 	}
 
@@ -19,16 +28,30 @@
 		width: 100%;
 		background: #5f5f99;
 	}
+	#header #header-links {
+        float: right;
+	}
+	#header #header-links a {
+		color: white;
+	}
 	#header  #title {
 		color: white;
 		margin-left: 30%;
-		margin-top: 7px;
-		font-size: 40px;
+		margin-top: 12px;
+		font-size: 35px;
 		background: #5f5f99;
 	}
-	.container {
-		background: #ccd1ef;
-		height: 530px;
+	.containerx {
+		background: #eee;
+		background-image:url(pic1.jpg) ;
+		height: 500px;
+		width: 100%;
+
+	}
+	.containerx .background-image {
+		width: 100%;
+
+
 	}
 	#search-txt {
 		font-size: 30px;
@@ -36,25 +59,26 @@
 			align-content: center;
 			padding-left: 150px;
 			padding-right: 150px;
-			background-color:#7ed1cf ;
 
 	}
 	#search-btn{
 		font-size: 30px;
 		margin-top: 200px;
-			margin-left: 0%;
-			align-content: center;
-			background-color:#a9a9e1 ;
+		margin-left: 0%;
+		align-content: center;
+		padding-left: 10px;
+		padding-right: 10px;
+		background: green;
 	}
-footer{
-	text-align: center; background:#a9a9e1 ;font-family: fantasy;
-	height: 50px;
-}
-footer p {
-	text-align: center;
-	line-height: 15px;
-	padding-top: 10px;
-}
+    footer{
+	   text-align: center; background:#a9a9e1 ;font-family: fantasy;
+	   height: 50px;
+    }
+    footer p {
+	  text-align: center;
+	  line-height: 15px;
+	  padding-top: 10px;
+    }
 
     #loader {
 		height: 50px;

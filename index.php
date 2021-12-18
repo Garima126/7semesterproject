@@ -1,25 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>Price Comparision System</title>
-	<link rel="stylesheet" type="text/css" href="style.css"/>
-</head>
-<body>
-	<div id="header"> 
-		<span id="title">Price Comparision System</span>
-	</div>
-      <div class="container" style="background-position: center; background-image:url(balanceme.png); background-repeat: no-repeat; ">
+<?php require_once("header.php"); ?>
+	<?php require_once("session.php"); ?>
+      <div class="containerx" style=" background-image:url(pic1.jpg); background-repeat: no-repeat; width: 100%; background-size: 100%;  ">
       		<div class="search-panel">
       			<form action="process.php" method="post">
-      				<input type="text" name="search-txt" placeholder="Type a product" id="search-txt"/>
-      				<input type="submit" name="search-btn" value="Analyze" id="search-btn"/>
+      				<input type="text" name="search-txt" placeholder="Type a product name" id="search-txt"/>
+      				<input type="submit" name="search-btn" value="Search" id="search-btn"/><br>
+      				<?php if ($session->getSession('search-txt-err') == true) { ?>
+      					<span id="search-txt-err">Please enter a search item</span>
+      					<?php $session->clearSession('search-txt-err'); ?>
+      				<?php } ?>
       			</form>
       		</div>
       </div>
-      	<footer>
-		  <p>Authors: Manisha,Garima, Sadiskya</p>
-		  <p><a href="mailto:team@gmail.com"></a></p>
-		</footer>
-</body>
-</html>
+ <?php require_once("footer.php"); ?>
