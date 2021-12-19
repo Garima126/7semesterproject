@@ -17,7 +17,7 @@
 		<span id="header-links">
 			<a href="index.php" class="btn btn-primary">Main Page</a>
 			<a href="site_settings.php" class="btn btn-info">Site Settings</a>
-			<a href="admin.php" class="btn btn-warning">Admin Login</a>
+			<a href="register.php" class="btn btn-warning">Customer Register</a>
 		</span>
 	</div>
 	<section class="h-100">

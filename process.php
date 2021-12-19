@@ -37,6 +37,7 @@ $urls = array(
     <tbody>
   <?php 
   $num = 1;
+  $pArray = [];
   foreach($urls as $url) { ?>
   	<tr>
   		<td><?php echo $num; ?></td>
@@ -48,6 +49,7 @@ $urls = array(
   	$price = $remote->getPrice($url['site'], $url['start'], $url['end'] );
   	if (!is_object($price)) {
   		echo "price: ". $price . "<br/>";
+  		$pArray[] = array ('url' => $url['site'], 'price' => $price);
   	}
   	?>
     </td>
@@ -55,7 +57,7 @@ $urls = array(
     </tr>
   <?php
   }
- ?>
+   ?>
 </tbody>
 </table>
  <script>
@@ -67,5 +69,51 @@ $urls = array(
   }
 </script>
 </div>
+ <div id="chart_div"></div>
+<!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+      	
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Site');
+        data.addColumn('number', 'Price');
+     
+<?php
+    for($i=0;$i<count($pArray);$i++){?> 
+data.addRows([
+	<?php
+	$p = preg_replace('/[^0-9]/', '', $pArray[$i]['price']);  
+        echo "['" . $pArray[$i]['url'] . "'," . $p . "]";
+     
+    ?>   
+]);
+<?php } ?>
+
+
+
+      
+
+        // Set chart options
+        var options = {'title':'Price Difference of the product',
+                       'width':600,
+                       'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
 
 <?php require_once("footer.php"); ?>
