@@ -18,6 +18,31 @@
 <?php 
 
 require 'remote.php'; 
+$keyword = str_replace(' ', '+', $_POST['search-txt']);
+$url = "https://www.sastodeal.com/catalogsearch/result/?q=$keyword";
+$html = file_get_contents($url);
+
+
+$dom = new DOMDocument;
+@$dom->loadHTML($html);
+$output = array();
+$keyword2 = str_replace(' ', '-', $_POST['search-txt']);
+foreach ($dom->getElementsByTagName('a') as $item) {
+
+  if (strpos($item->getAttribute('href'), $keyword2) !== false) {
+    print_r($item->getAttribute('href'));
+    
+   $output[] = array (
+      'str' => $dom->saveHTML($item),
+      'href' => $item->getAttribute('href'),
+      'anchorText' => $item->nodeValue
+   );
+  }
+}
+
+//print_r($output);die;
+die;
+
 
 $urls = array(
 	array(
