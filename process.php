@@ -19,8 +19,8 @@
 
 require 'remote.php'; 
 $keyword = str_replace(' ', '+', $_POST['search-txt']);
-$url = "https://www.sastodeal.com/catalogsearch/result/?q=$keyword";
-$html = file_get_contents($url);
+$sasurl = "https://www.sastodeal.com/catalogsearch/result/?q=$keyword";
+/*$html = file_get_contents($url);
 
 
 $dom = new DOMDocument;
@@ -42,12 +42,39 @@ foreach ($dom->getElementsByTagName('a') as $item) {
 
 //print_r($output);die;
 die;
-
+*/
+/*
 
 $urls = array(
 	array(
 		'site' => 'https://www.sastodeal.com/electronic/mobile/oneplus.html', 'start' => '<span class="price">', 'end' => '</span>'),
 	array('site' => 'https://www.daraz.com.np/smartphones/oneplus_brand/', 'start' => 'Rs. ', 'end' => 'ratingScore')
+);
+*/
+
+$html = file_get_contents($sasurl);
+
+$dom = new DOMDocument;
+@$dom->loadHTML($html);
+$output = null;
+$keyword2 = str_replace(' ', '-', $_POST['search-txt']);
+foreach ($dom->getElementsByTagName('a') as $item) {
+
+  if (strpos($item->getAttribute('href'), $keyword2) !== false) {
+    
+   $output[] = array (
+      'href' => $item->getAttribute('href'),
+   );
+  }
+
+
+}
+
+
+$urls = array(
+  array('site' => $output[0]['href'], 'start' => '<span class="price">', 'end' => '</span>'),
+  array('site' => $output[6]['href'], 'start' => '<span class="price">', 'end' => '</span>'),
+  /*array('site' => 'daraz-product.txt', 'start' => 'Rs. ', 'end' => '\"}";')*/
 );
 
 ?>
@@ -62,7 +89,7 @@ $urls = array(
     <tbody>
   <?php 
   $num = 1;
-  $pArray = [];
+  $pArray = []; 
   foreach($urls as $url) { ?>
   	<tr>
   		<td><?php echo $num; ?></td>
@@ -74,7 +101,7 @@ $urls = array(
   	$price = $remote->getPrice($url['site'], $url['start'], $url['end'] );
   	if (!is_object($price)) {
   		echo "price: ". $price . "<br/>";
-  		$pArray[] = array ('url' => $url['site'], 'price' => $price);
+  		$pArray[] = array ('site' => $url['site'], 'price' => $price);
   	}
   	?>
     </td>
@@ -120,7 +147,7 @@ $urls = array(
 data.addRows([
 	<?php
 	$p = preg_replace('/[^0-9]/', '', $pArray[$i]['price']);  
-        echo "['" . $pArray[$i]['url'] . "'," . $p . "]";
+        echo "['" . $pArray[$i]['site'] . "'," . $p . "]";
      
     ?>   
 ]);
