@@ -29,10 +29,10 @@
 					<div class="card fat">
 						<div class="card-body">
 							<h4 class="card-title">Login</h4>
-							<form method="POST" class="my-login-validation" novalidate="">
+							<form method="POST" class="my-login-validation" novalidate="" action="login_process.php">
 								<div class="form-group">
 									<label for="email">Username</label>
-									<input id="email" type="email" class="form-control" name="email" value="" required autofocus>
+									<input id="email" type="email" class="form-control" name="username" value="" required autofocus>
 									<div class="invalid-feedback">
 										Username is invalid
 									</div>

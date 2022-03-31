@@ -1,6 +1,6 @@
-
 <?php require_once("header.php"); ?>
 	<?php require_once("session.php"); ?>
+	<?php if (!isset($_SESSION['username'])) {  ?>
       <div class="containerx" style=" background-image:url(pic1.jpg); background-repeat: no-repeat; width: 100%; background-size: 100%;  ">
       		<div class="search-panel">
       			<form action="process.php" method="post">
@@ -13,5 +13,6 @@
       			</form>
       		</div>
       </div>
+	  <?php } ?>
  <?php require_once("footer.php"); ?>
 					  

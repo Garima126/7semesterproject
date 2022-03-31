@@ -20,25 +20,33 @@
         </span>
     </div>
     <div class="registration-form">
-        <form>
+        <form action="register_process.php" method="POST">
             <div class="form-group">
-                <input type="text" class="form-control item" id="username" placeholder="Username">
+                <input type="text" class="form-control item" id="username" name="username" placeholder="Username">
             </div>
             <div class="form-group">
-                <input type="password" class="form-control item" id="password" placeholder="Password">
+                <input type="password" class="form-control item" id="password" name="password" placeholder="Password">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control item" id="email" placeholder="Email">
+                <input type="text" class="form-control item" id="email" name="email" placeholder="Email">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control item" id="phone-number" placeholder="Phone Number">
+                <input type="text" class="form-control item" id="phone-number" name="phone" placeholder="Phone Number">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control item" id="birth-date" placeholder="Address">
+                <input type="text" class="form-control item" id="birth-date" name="address" placeholder="Address">
             </div>
             <div class="form-group">
-                <button type="button" class="btn btn-block create-account">Create Account</button>
+                <input type="submit" class="btn btn-block create-account" value="Create Account"/>
             </div>
+
+
+            <?php if (isset($_GET['res'])) { ?>
+                    
+                    <span style="height:80px; width:400px; background:green; color:white;" > Registered successfully </span>
+<?php
+            }
+  ?>
         </form>
         <div class="social-media">
             <h5>Sign up with social media</h5>
